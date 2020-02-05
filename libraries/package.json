@@ -1,0 +1,17 @@
+{
+  "name": "libraries",
+  "version": "1.0.0",
+  "description": "Leccion de librerias",
+  "main": "index.js",
+  "dependencies": {
+    "faker": "^4.1.0"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
