@@ -73,4 +73,86 @@ const charMap = 'simon'.split('').reduce((acc, cur) => {
   return acc;
 }, {});
 
-console.log(charMap)
+console.log(charMap);
+
+// Inmutabilidad
+let arr = [1, 2, 3];
+let mapped = [2, 4, 6];
+
+const str = "Hola mundo";
+const str2 = str.slice(0, 5);
+const str3 = str3.toUpperCase();
+
+console.log(str);
+
+let str = "Hola mundo";
+str = str.slice(0, 5);
+str = str3.toUpperCase();
+
+console.log(str);
+
+const obj = {
+  a: 7
+};
+// obj.a = 3;
+const obj2 = {
+  ...obj,
+  a: 5,
+  b: 8
+}
+
+const obj3 = {
+  c: 7
+}
+
+const obj3 = Object.assign({}, obj, obj2, obj3, { b: 5 });
+// {
+//   a: 5,
+//   c: 7,
+//   b: 5
+// }
+// 1. Crea un nuevo objeto.
+// 2. a ese objeto le agrega las propiedades de obj.
+// 3. a ese objeto le agreg las propiedades de obj2.
+
+// map, filte, reduce, concat, slice
+const arr = [];
+// arr[1] = 0; // modifica
+// arr.push(0); // modifica
+// arr.splie() // modifica
+const arr2 = arr.concat(0);
+const arr3 = [ ...arr2, 1 ];
+
+console.log(arr3); // [ 0, 1]
+
+let str = '';
+
+function pureFuction(a, b) {
+  // side effects
+  // str += 'hola';
+  // console.log('hola mundo');
+  // requestServer();
+
+  return a + b;
+}
+
+function impureFuction(a) {
+  str += a;
+  return str;
+}
+
+// Siempre retorna lo mismo
+pureFunction(1, 2); // 3
+pureFunction(1, 2); // 3
+pureFunction(1, 2); // 3
+
+// Dados los mismos argumentos el resultado no es el mismo
+impureFuction('hola'); // hola
+impureFuction('hola'); // holahola
+impureFuction('hola'); // holaholahola
+
+let str = "Hola"
+str.toUpperCase()
+console.log(str) // Hola
+
+
