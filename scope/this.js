@@ -1,9 +1,11 @@
+module.exports.bar = 'modulo';
+
 function foo(arg1) {
   console.log(this.bar, 'arg: ', arg1);
 }
 
 const foo2 = () => {
-  console.log(this.bar);
+  console.log(this.bar); // en node es el modulo
 }
 
 // 4. por defecto, this es el scope global si no estoy stric mode
@@ -14,15 +16,18 @@ global.bar = 'global bar';
 // window.bar = 'window bar'
 
 foo('hola global context'); // global bar
+foo2(); // modulo
 
 // 3. si lo configuramos en el contexto de un objeto el this es el objeto
 console.log('\nObject Context');
 const obj = {
   foo, // implicit binding
+  foo2,
   bar: 'object context bar',
 };
 
 obj.foo('hola object contex'); // object context bar
+obj.foo2(); // modulo
 
 // 2. relacionar la función explicitamente con un objeto
 console.log('\nBinding Context');
@@ -33,6 +38,7 @@ const obj2 = {
 foo.call(obj2, 'hola call', 'arg2', 'arg3'); // binding context
 foo.apply(obj2, ['hola apply', 'arg2', 'arg3']); // binding context
 obj.foo.call(obj2); // binding context
+foo2.call(obj2); // modulo
 
 console.log('\nHard binding');
 const obj3 = {
@@ -78,15 +84,3 @@ const person = new Person('Maria', 25);
 console.log(person.name);
 console.log(person.age);
 console.log(person.constructor);
-
-
-const book = {
-  content: "Así comienza el libro",
-  numWords() {
-    return this.content.split(" ").length
-  }
-}
-
-const words = book.numWords.call({ body: "Otro libro" });
-console.log(`El libro tiene ${words} palabras`)
-
