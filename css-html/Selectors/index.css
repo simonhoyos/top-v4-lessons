@@ -1,0 +1,151 @@
+/*
+class: .class
+id: #id
+tag: p
+attribute:
+  [href]
+  [href="https://loquesea.com"]
+  [href*="loquesea"]
+  [href^="http://"]
+  [href$=".com"]
+*/
+
+/*
+combinators
+  selector1 selector2
+  selector1 > selector2
+  selector1 ~ selector2
+  selector1 + selector2
+*/
+
+/*
+  ::pseudo-elements
+    ::first-letter
+    ::first-line
+    ::before
+    ::after
+    ::placeholder
+*/
+
+/*
+  :pseudo-clases
+    :disabled
+    :hover
+    :focus
+    :first-child
+    :first-of-type
+    :last-child
+    :last-of-type
+    :checked
+    :nth-child()
+    :nth-last-child()
+    :required
+    :visited
+*/
+
+
+[href] {
+  color: royalblue;
+}
+
+[href="https://loquesea.com"] {
+  color: red;
+}
+
+[href^="http://"] {
+  color: blueviolet;
+}
+
+div p {
+  color: goldenrod;
+}
+
+div > p {
+  color: greenyellow;
+}
+
+section ~ p {
+  color: lightcoral;
+}
+
+section + p {
+  color: black;
+}
+
+p::first-letter {
+  font-size: 36px;
+}
+
+section p {
+  position: relative;
+}
+
+section p::after {
+  content: '';
+  width: 50%;
+  height: 3px;
+  background-color: lightseagreen;
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  display: block;
+}
+
+/* input::placeholder {
+  font-size: 20px;
+} */
+
+li:hover {
+  font-size: 10px;
+}
+
+input:focus {
+  font-size: 20px;
+}
+
+li:nth-child(1n + 4) {
+  color: red;
+}
+
+/*
+  Specificity
+  0  0  0
+  a  b  c
+
+  c: tag y pseudo-elementos
+  b: classes, atributos y pseudo clases
+  a: id
+*/
+
+/* 0 0 2  */
+main span {
+  color: red;
+}
+
+span {
+  color: green;
+}
+
+#list-item {
+  color: yellow !important;
+}
+
+/* 1 0 0*/
+/* #id {} */
+
+/* 0 1 0 */
+/* .class {} */
+
+/* 0 0 10 */
+/* p p p p p p p p p p {} */
+
+/* 0 0 4 */
+/* div + section > p::first-letter */
+
+/* 0 3 4 */
+/* body .container > form input:disabled + button:hover {} */
+
+/* 1 0 0 0  estilos en linea */
+/* 1 0 0 0 0  !important */
+
+

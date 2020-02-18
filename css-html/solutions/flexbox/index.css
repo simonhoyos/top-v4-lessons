@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+header {
+  width: 100%;
+  height: 70px;
+}
+header .container {
+  width: 70%;
+  margin: auto;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  font-size: 1.5em;
+  height: 70px;
+  width: 30%;
+  line-height: 70px;
+}
+nav {
+  height: 70px;
+  width: 60%;
+  line-height: 70px;
+  text-align: right;
+}
+nav a {
+  text-decoration: none;
+}
+main {
+  width: 100%;
+  height : 800px;
+  background-color: lightgray;
+}
+main .container {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.aside {
+  margin-top: 10px;
+  background-color: white;
+  /* width: 30%; */
+  height : 500px;
+  display: flex;
+  border-radius: 5px;
+  flex-grow: 1;
+}
+.aside .container{
+  width: 90%;
+  height: 95%;
+}
+.aside .container .imagen{
+  text-align: center;
+}
+.aside .container img{
+  width: 80%;
+  border-radius: 50%;
+}
+.article {
+  /* width: 70% ; */
+  margin-top:10px;
+  margin-left: 10px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  /* align-content: flex-start; */
+  justify-content: space-between;
+  flex-grow: 3;
+}
+article{
+  height: 200px;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+}
+article .container{
+  width: 95%;
+  height: 90%;
+  background-color: black;
+  display: flex;
+}
+article .container .image{
+  width: 30%;
+  height: 100%;
+  background-color: aliceblue;
+  margin-right: 10px;
+}
+article .container .texto{
+  width: 70%;
+  height: 100%;
+  background-color: blueviolet;
+}
