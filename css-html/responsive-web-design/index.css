@@ -1,0 +1,112 @@
+/*
+CSS Units
+  Absolute:
+    px
+  Relative:
+    %,
+    vw,
+    vh,
+    em,
+    rem,
+*/
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  margin: 5px;
+}
+
+/* @media MediaType and|or|not|only MediaFeatures */
+
+/* @media all {}
+@media speech {} */
+/* @media print {
+  p {
+    color: red;
+  }
+} */
+/*
+Media Feautures
+  min-width
+  max-width
+  orientation
+  aspect-ratio
+  color
+  height
+  resolution
+*/
+
+/* Mobile First */
+/* mobile: 300px - 575px portrait */
+/* modile: 576px - 767px landscape */
+@media screen and (max-width: 767px) {}
+@media screen and (max-width: 767px) and (orientation: landscape) {}
+/* tablet: 768px - 991px */
+@media screen and (min-width: 768px) {}
+/* desktop: 992px - 1199px */
+@media screen and (min-width: 992px) {}
+/* monitor: 1200px - */
+@media screen and (min-width: 1200px) {}
+
+
+
+
+@media screen and (min-width: 600px) {
+  .box1 {
+    background-color: green;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .box2 {
+    background-color: red;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .box3 {
+    background-color: yellow;
+  }
+}
+
+/* Fluid design */
+.box4 {
+  width: 50%;
+}
+
+/* Adaptive design */
+.box5 {
+  width: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  .box5 {
+    width: 50px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .box5 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .box5 {
+    max-width: 1250px;
+  }
+}
