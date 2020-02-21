@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  /* transform: scaleX(2) scaleY(1.5); */
+  /* transform: scale(2, 1.5); */
+  /* transform: translateX(-100px) translateY(100px); */
+  /* transform: translate(-100px, -100px); */
+  /* transform: rotateZ(60deg); */
+  display: none;
+}
+
+.box1 {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  transition: all 2s linear, background-color 1s linear;
+  display: none;
+}
+
+.box1:hover {
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
+  /* transition-property: width, height, background-color;
+  transition-duration: 2s, 2s, 1s;
+  transition-timing-function: linear;
+  transition-delay: 0; */
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+    background-color: green;
+  }
+  to {
+    transform: translateY(250px);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(100px, 0);
+  }
+  25% {
+    transform: translate(0, 100px);
+  }
+  50% {
+    transform: translate(-100px, 0);
+  }
+  75% {
+    transform: translate(0, -100px);
+  }
+  100% {
+    transform: translate(100px, 0);
+  }
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: blue;
+  /* animation-name: bounce;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-delay: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both; */
+  /* animation-play-state: paused; */
+  /* animation: bounce 1s ease-in 1s alternate infite both running; */
+ animation: rotate 1s ease-in-out .5s normal infinite both;
+}
+
+
