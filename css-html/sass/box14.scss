@@ -1,0 +1,51 @@
+@import 'variables.scss';
+
+.box {
+  #{$width}: $size;
+  height: $size;
+  background-color: $color;
+}
+
+//Mixins
+
+@mixin square($size, $color) {
+  width: 100px * $size;
+  height: 100px / $size;
+  background-color: $color;
+  @content;
+}
+
+.box1 {
+  @include square(1, red);
+  margin: 10px;
+}
+
+.box2 {
+  @include square(2, blue) {
+    margin: 20px;
+  };
+}
+
+// herencia y operadores
+.box3 {
+  @extend .box1;
+  width: 150px * 2;
+}
+
+
+// Anidación de selectores y propiedades
+.box4 {
+  background: lightgrey;
+
+  p {
+    font: {
+      weight: bold;
+      size: 36px;
+      family: Helvetica;
+    }
+
+    span {
+      color: yellow;
+    }
+  }
+}

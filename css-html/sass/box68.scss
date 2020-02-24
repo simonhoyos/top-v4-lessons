@@ -1,0 +1,24 @@
+// cilcos e interpolacion
+
+@each $selector in box6, box7, box8 {
+  .#{$selector} {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+  }
+}
+
+@for $i from 6 through 8 {
+  .box#{$i} {
+    width: 10px * $i;
+  }
+}
+
+$i: 6;
+@while $i <= 8 {
+  .box#{$i} {
+    margin: 2px * $i;
+  }
+
+  $i: $i + 1;
+}

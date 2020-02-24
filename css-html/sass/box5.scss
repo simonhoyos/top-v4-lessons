@@ -1,0 +1,17 @@
+@import 'variables.scss';
+
+.#{$box}5 {
+  background: lightgrey;
+
+  &__text {
+    #{$font}: {
+      weight: bold;
+      size: 36px;
+      family: Helvetica;
+    }
+
+    &--yellow {
+      color: yellow;
+    }
+  }
+}

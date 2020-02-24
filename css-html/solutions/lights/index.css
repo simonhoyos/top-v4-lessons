@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+main {
+  display:flex;
+  justify-content: center;
+  align-content: center;
+}
+.box {
+  width: 170px;
+  height: 400px;
+  border-radius: 30px;
+  border: 2px;
+  border-color: black;
+  background-color: #616A57;
+  display:flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.red {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px;
+  border-color: black;
+  background-color: #A60B0B;
+  margin: 20px;
+  animation-name: red;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-delay: 1s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+
+}
+.yellow {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px;
+  border-color: black;
+  background-color: #F6E00E;
+  margin: 20px;
+  animation-name: yellow;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-delay: 1s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+.green {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px;
+  border-color: black;
+  background-color: #1CB92B;
+  margin: 20px;
+  animation-name: green;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-delay: 1s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+@keyframes red {
+  0% {
+      background: #111;
+  }
+  2%,
+  40% {
+      background: #A60B0B;
+  }
+  42%,
+  100% {
+     background: #111 ;
+  }
+}
+
+ @keyframes yellow {
+    0%,
+    20% {
+        background: #111;
+     }
+    22%,
+    40% {
+        background: #F6E00E;
+    }
+    42%,
+    80% {
+       background: #111 ;
+    }
+    84%,
+    100% {
+        background: #F6E00E;
+
+    }
+}
+
+ @keyframes green {
+    0%,
+    40%{
+     background: #111;
+    }
+    42%,
+    80% {
+        background: #1CB92B;
+    }
+    84%,
+    100% {
+        background: #111;
+    }
+}
