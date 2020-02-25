@@ -133,9 +133,9 @@ button.addEventListener('click', clickHandler);
 // });
 
 // const container = $('.container');
-const container = document.querySelector('.container');
+// const container = document.querySelector('.container');
 
-const element = "<p>lorem ipsum</p>";
+// const element = "<p>lorem ipsum</p>";
 
 // container.append(element);
 // container.append(element);
@@ -151,15 +151,35 @@ const element = "<p>lorem ipsum</p>";
 //   </div>
 // `;
 
-const blog = `
-  <h2>${posts[0].title}</h2>
-  <span>${posts[0].date}</span>
-`;
+// const container = $('.container');
 
-console.log(blog);
+// posts.forEach(({ title, date, category, image, body }) => {
+//   const post = `
+//     <div class="article">
+//       <img src="${image.src}" alt="${image.alt}" />
+//       <h2>${title}</h2>
+//       <span>${date}</span> | <span>${category}</span>
+//       <p>${body}</p>
+//     </div>
+//   `;
 
-container.innerHTML = blog;
-// container.innerHTML += 'hola mundo';
+//   container.append(post);
+// });
+
+const container = document.querySelector('.container');
+
+const postsHTML = posts.map(({ title, date, category, image, body }) => {
+  return `
+    <div class="article">
+      <img src="${image.src}" alt="${image.alt}" />
+      <h2>${title}</h2>
+      <span>${date}</span> | <span>${category}</span>
+      <p>${body}</p>
+    </div>
+  `;
+}).join('');
+
+container.innerHTML = postsHTML;
 
 
 
