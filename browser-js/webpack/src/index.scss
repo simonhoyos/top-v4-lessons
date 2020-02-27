@@ -1,0 +1,10 @@
+@mixin title {
+  font-size: 36px;
+  color: red;
+}
+
+.container {
+  h1 {
+    @include title;
+  }
+}
