@@ -149,3 +149,10 @@ usersCollection.doc('ykR0MStE0oue7VQ6rGlN').get()
 
     console.log(userData);
   })
+
+postsCollection.get()
+  .then(docs => {
+    docs.forEach(doc => {
+      console.log(doc.data());
+    })
+  })
