@@ -1,35 +1,80 @@
 const express = require('express');
+const uuid = require('uuid-random');
 
 const app = express();
 
 // Agregar esta linea para poder trabajar con post
 app.use(express.json());
 
-const messages = [];
+let messages = [];
 
 // Rutas
-app.get('/', (req, res) => {
+app.get('/messages', (req, res) => {
   // controlador
   console.log('request GET /');
   // console.log(req);
   // res.status(200).send('<h1>Hola Mundo</h1>');
   // res.sendFile(`${__dirname}/views/index.html`);
   // res.json({ sender: 'Simon', message: 'Hola'})
-  res.json(messages);
+  res.status(200).json(messages);
 });
+
+app.get('/messages/:id', (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+
+  const message = messages.filter(message => message.id === id);
+
+  res.status(200).json(message[0]);
+})
 
 // app.get('/movies/favorites', () => {
 //   console.log('request GET /movies/favorites');
 // });
 
-app.post('/', (req, res) => {
+app.post('/messages', (req, res) => {
   // console.log(req.body);
-  messages.push(req.body);
-  res.status(200).send('Todo Ok!');
+  const message = {
+    ...req.body,
+    id: uuid()
+  };
+  messages.push(message);
+  res.status(200).send(message);
 });
 
-// app.put('', () => {});
-// app.delete('', () => {});
+// http://localhost:3000?name=simon&lastname=hoyos
+// app.put('/', (req, res) => {
+//   console.log(req.query.name)
+//   console.log(req.query.lastname)
+// });
+
+app.put('/messages/:id', (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+
+  const message = messages.filter(message => message.id === id)[0];
+  console.log(message);
+  const newData = req.body;
+
+  const newMessage = {
+    id: message.id,
+    sender: newData.sender || message.sender,
+    message: newData.message || message.message
+  };
+
+  // modificar el arreglo para cambiar el mensaje.
+
+  res.status(200).json(newMessage);
+});
+
+
+app.delete('/messages/:id', (req, res) => {
+  const id = req.params.id;
+  let deletedMessage;
+  messages = messages.filter(message => message.id != id);
+
+  res.status(200).json(deletedMessage);
+});
 
 // Incializar el servidor
 app.listen(3000, () => {
