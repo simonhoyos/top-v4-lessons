@@ -38,7 +38,7 @@ app.post('/messages', (req, res) => {
     ...req.body,
     id: uuid()
   };
-  messages.push(message);
+  messages = messages.concat(message);
   res.status(200).send(message);
 });
 
@@ -51,8 +51,16 @@ app.post('/messages', (req, res) => {
 app.put('/messages/:id', (req, res) => {
   const id = req.params.id;
   console.log(id);
+  let i = -1;
 
-  const message = messages.filter(message => message.id === id)[0];
+  const message = messages.filter((message, index) => {
+    if(message.id === id) {
+      i = index;
+      return true;
+    }
+
+    return false;
+  })[0];
   console.log(message);
   const newData = req.body;
 
@@ -63,6 +71,10 @@ app.put('/messages/:id', (req, res) => {
   };
 
   // modificar el arreglo para cambiar el mensaje.
+  // messages.splice(i, 1, newMessage);
+  const firstHalf = messages.slice(0, i);
+  const secondHalf = messages.slice(i + 1);
+  messages = firstHalf.concat(secondHalf);
 
   res.status(200).json(newMessage);
 });
