@@ -4,7 +4,15 @@ html
     title Una Vista con Pug
     style
   body
+    //- - var title = 'Hola mundo'
     div
-      h1(class="title" data-id="3wef-sghdsf-gfdshjgelrw") Title
-      p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem accusantium a non! Omnis, laboriosam tenetur possimus in asperiores dolorum aliquam quas placeat expedita natus quo aperiam? Aliquam eaque voluptatem laboriosam?
+      //- h1= title
+      h1(class="title" data-id="3wef-sghdsf-gfdshjgelrw")= title
+      p= description
+      if authenticated
+        a(href="/messages") Ir mensajes
+      //- else
+      //-   a(href="/login") Iniciar sesion
+      unless authenticated
+        a(href="/login") Iniciar Sesión
     script

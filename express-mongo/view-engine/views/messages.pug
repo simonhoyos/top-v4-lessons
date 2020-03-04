@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title Messages
+  body
+    h1 Messages
+    p This is the complete list of messages
+    a(href="/") Volver al home
+    div.messages#messages
+      each message in messages
+        .message
+          h2.message__sender By #{message.sender}
+          p.message__content= message.message
+          a(href=`/messages/${message.id}`) ver más
