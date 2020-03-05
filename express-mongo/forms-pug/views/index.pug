@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title Forms
+  body
+    h1 Hola mundo
+    form(action="/messages" method="POST")
+      fieldset
+        label(for="sender") Sender
+        input(type="text" name="sender" id="sender")
+      fieldset
+        label(for="message") Message
+        input(type="text" name="message" id="message")
+      button Submit

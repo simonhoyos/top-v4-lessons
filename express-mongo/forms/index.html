@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form class="form">
+    <fieldset>
+      <label for="name">Name</label>
+      <input type="text" id="name" list="names">
+
+      <datalist id="names">
+        <option value="simon">
+        <option value="maria">
+        <option value="ana">
+        <option value="pedro">
+      </datalist>
+    </fieldset>
+    <radiogroup>
+      <input type="radio" name="opption">
+      <input type="radio" name="opption">
+      <input type="radio" name="opption">
+    </radiogroup>
+    <input type="checkbox">
+    <input type="number">
+    <input type="password">
+    <input type="date">
+    <input type="email">
+    <select>
+      <optgroup label="names">
+        <option value="simon">simon</option>
+        <option value="maria">maria</option>
+        <option value="ana">ana</option>
+        <option value="pedro">pedro</option>
+      </optgroup>
+      <optgroup label="last names">
+        <option value="simon">simon</option>
+        <option value="maria">maria</option>
+        <option value="ana">ana</option>
+        <option value="pedro">pedro</option>
+      </optgroup>
+    </select>
+    <textarea></textarea>
+    <button>Submit</button>
+  </form>
+
+  <script src="index.js"></script>
+</body>
+</html>
