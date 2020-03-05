@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  form(action="/authors" method="POST")
+    label(for="name") Name
+    input(type="text" id="name" name="name")
+    button Create Author
+
+//- block imVeryCreativeWithNames
+//-   p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod quis laboriosam ut, deserunt quibusdam necessitatibus autem voluptatum provident nam rerum aliquam nobis optio unde quasi, fugiat, tempora ex eaque sequi.

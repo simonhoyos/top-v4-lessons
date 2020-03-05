@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  form(action="/notes" method="POST")
+    fieldset
+      label(for="title") Title
+      input(type="text" id="title" name="title")
+    fieldset
+      label(for="body") Body
+      textarea(id="body" name="body")
+    fieldset
+      label(for="public") Make Public
+      input(type="checkbox" id="public" name="public")
+    fieldset
+      select(id="author" name="author")
+        each author in authors
+          option= author.name
+    button Create Note

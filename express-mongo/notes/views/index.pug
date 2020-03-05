@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Welcome to #{title} APP
+  img(src="/images/harley.jpg")
+  each note in notes
+    if note.public
+      h2= note.title
+      p= note.body
+      p= note.author

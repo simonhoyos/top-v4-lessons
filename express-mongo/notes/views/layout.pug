@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title= title
+    //- style
+    //-   include ../public/css/index.css
+    link(rel="stylesheet" href="/css/index.css")
+  body
+    header
+      nav
+        ul
+          li
+            a(href="/") Home
+          li
+            a(href="/authors") Authors
+          li
+            a(href="/notes") Notes
+
+    block content
+
+    footer
+      span Made with love by MIR students
+
+    //- script.
+    //-   console.log('hola Notes App');
+
+    script(src="/js/index.js")
+
+    //- block imVeryCreativeWithNames

@@ -29,16 +29,18 @@ app.get('/messages/:id', (req, res) => {
 });
 
 app.post('/messages', (req, res) => {
-  const data = req.body;
-  const id = uuid();
-  const message = {
-    ...data,
-    id
-  };
+  if(req.body.terms) {
+    const data = req.body;
+    const id = uuid();
+    const message = {
+      ...data,
+      id
+    };
 
-  messages.push(message);
+    messages.push(message);
 
-  res.redirect(`/messages/${id}`);
+    res.redirect(`/messages/${id}`);
+  }
 });
 
 app.listen(port, () => console.log(`Server listening on http://localhost:${port}`));
