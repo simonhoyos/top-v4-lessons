@@ -2,21 +2,19 @@ const express = require('express');
 const cors = require('cors');
 const connection = require('./db');
 const notesRouter = require('./routes/notes');
-const notesController = require('./controllers/notes.controller')
 
 const app = express();
 const port = 3000;
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
-// app.use('/notes', notesRouter);
-
-app.get('/notes', notesController.getAll);
-app.get('/notes/:id', notesController.getOne);
-app.post('/notes', notesController.create);
-app.put('/notes/:id', notesController.update);
-app.delete('/notes/:id', notesController.delete);
+// app.get('/notes', notesController.getAll);
+// app.get('/notes/:id', notesController.getOne);
+// app.post('/notes', notesController.create);
+// app.put('/notes/:id', notesController.update);
+// app.delete('/notes/:id', notesController.delete);
+app.use('/notes', notesRouter);
 
 connection.on(
   'error',

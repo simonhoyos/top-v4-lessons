@@ -4,47 +4,18 @@ const notesController = require('../controllers/notes.controller');
 // const router = express.Router();
 
 // /notes/
-// router.route('/').get((req, res) => {
-//   Note.find()
-//     .then(notes => res.json(notes))
-//     .catch(err => res.status(400).json({ message: 'Something went wrong!' }));
-// });
+router.route('/').get(notesController.getAll);
 
 // /notes/:id
-router.route('/:id').get((req, res) => {
-  const id = req.params.id;
-
-  Note.findById(id)
-    .then(note => res.json(note))
-    .catch(err => res.status(400).json({ message: 'Something went wrong!' }));
-});
+router.route('/:id').get(notesController.getOne);
 
 // /notes
-// router.route('/').post((req, res) => {
-//   const data = req.body;
-
-//   Note.create(data)
-//     .then(note => res.json(note))
-//     .catch(err => res.status(400).json({ message: 'Something went wrong!' }));
-// });
+router.route('/').post(notesController.create);
 
 // /notes/:id
-// router.route('/:id').put((req, res) => {
-//   const id = req.params.id;
-//   const data = req.body;
-
-//   Note.findByIdAndUpdate(id, data)
-//     .then(note => res.json(note))
-//     .catch(err => res.status(400).json({ message: 'Something went wrong!' }));
-// });
+router.route('/:id').put(notesController.update);
 
 // /notes/:id
-// router.route('/:id').delete((req, res) => {
-//   const id = req.params.id;
+router.route('/:id').delete(notesController.delete);
 
-//   Note.findByIdAndDelete(id)
-//     .then(note => res.json(note))
-//     .catch(err => res.status(400).json({ message: 'Something went wrong!' }));
-// });
-
-module.export = router;
+module.exports = router;
