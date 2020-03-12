@@ -3,11 +3,13 @@ const User = require('../models/user.model');
 const Room = require('../models/room.model');
 
 module.exports = {
-  getAll(req, res) {
-    Message.find()
-      .populate('sender', 'name email -_id')
-      .then(messages => res.json(messages))
-      .catch(error => res.json(error));
+  async getAll(req, res) {
+    try {
+      const messages = await Message.find().populate('sender', 'name email -_id')
+      res.json(messages);
+    } catch(error) {
+      res.json(error);
+    }
   },
   getOne(req, res) {
     const { id } = req.params;
@@ -20,32 +22,22 @@ module.exports = {
       .catch(error => res.json(error));
   },
   // /rooms/:roomId/messages
-  create(req, res) {
+  async create(req, res) {
     const roomId = '5e6948134d33e32509edd57f';
     const userId = '5e694234ffce9a2260c2501e';
     // req.session.user._id
-    Room.findById(roomId)
-      .then(room => {
-        console.log(room)
-        User.findById(userId)
-          .then(user => {
-            console.log(user)
-            Message.create({
-              ...req.body,
-              sender: user,
-            })
-              .then(message => {
-                console.log(message)
-                room.messages.push(message);
-                room.save()
-                  .then(() => res.json(message))
-                  .catch(error => res.json(error));
-              })
-              .catch(error => res.json(error));
-          })
-          .catch(error => res.json(error));
-      })
-      .catch(error => res.json(error))
+    try {
+      const room = await Room.findById(roomId);
+      const user = await User.findById(userId);
+      const message = await Message.create({ ...req.body, sender: user });
+
+      room.messages.push(message);
+      await room.save()
+
+      res.json(message);
+    } catch (error) {
+      res.json(error);
+    }
   },
   update(req, res) {
     const { id } = req.params;

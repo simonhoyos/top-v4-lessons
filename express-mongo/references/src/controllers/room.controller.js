@@ -1,26 +1,35 @@
 const Room = require('../models/room.model');
 
 module.exports = {
-  getAll(req, res) {
-    Room.find()
-      .populate('messages')
-      .then(rooms => res.json(rooms))
-      .catch(error => res.json(error));
+  async getAll(req, res) {
+    try {
+      const rooms =
+        await Room.find().populate({ path: 'messages', populate: { path: 'sender', select: 'name' } });
+      res.json(rooms);
+    } catch(error) {
+      res.json(error);
+    }
   },
-  getOne(req, res) {
+  async getOne(req, res) {
     const { id } = req.params;
-    Room.findById(id)
-      .populate({ path: 'messages', populate: 'user' })
+    try {
+      const room =
+        await Room.findById(id).populate({ path: 'messages', populate: 'user' });
       // .populate('owner')
       // .populate('participants')
       // .populate('messages', 'sender')
-      .then(room => res.json(room))
-      .catch(error => res.json(error));
+      res.json(room);
+    } catch(error) {
+      res.json(error);
+    }
   },
-  create(req, res) {
-    Room.create(req.body)
-      .then(room => res.json(room))
-      .catch(error => res.json(error));
+  async create(req, res) {
+    try {
+      const room = await Room.create(req.body);
+      res.json(room);
+    } catch(error) {
+      res.json(error);
+    }
   },
   update(req, res) {
     const { id } = req.params;

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 // const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
@@ -10,20 +12,21 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 // app.use(cookieParser());
 app.use(cookieSession({
-  secret: 'aklsdjfkljcvxysudfekwhrjkashfjkhsadf',
+  secret: process.env.SECRET,
   maxAge: 1000 * 60 * 60 * 24,
 }));
 
 const verify = (req, res, next) => {
   // if(req.cookies.id) {
-  if(req.session.user) {
-    next();
+  if(!req.session.user) {
+    res.sendStatus(401);
   }
-  res.sendStatus(401);
+
+  next();
 }
 
 // El usuario debe de estar autenticado.
-app.get('/', verify,  (req, res) => {
+app.get('/', verify, (req, res) => {
   console.log(req.session)
   res.sendStatus(200);
 });
@@ -42,6 +45,7 @@ app.get('/login', (req, res) => {
         // });
         req.session.user = user;
         res.sendStatus(200);
+        return;
       }
 
       res.status(401).send('Usuario o contraseña invalida');
