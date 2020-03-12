@@ -14,14 +14,16 @@ module.exports = {
     Message.findById(id)
       .populate({
         path: 'sender',
-        select: 'name'
+        select: 'name',
       })
       .then(message => res.json(message))
       .catch(error => res.json(error));
   },
+  // /rooms/:roomId/messages
   create(req, res) {
     const roomId = '5e6948134d33e32509edd57f';
     const userId = '5e694234ffce9a2260c2501e';
+    // req.session.user._id
     Room.findById(roomId)
       .then(room => {
         console.log(room)
