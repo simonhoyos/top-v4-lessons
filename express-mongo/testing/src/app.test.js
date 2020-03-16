@@ -1,6 +1,8 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const app = require('./app');
+
 
 describe('app', () => {
   beforeEach(async () => {
@@ -8,31 +10,14 @@ describe('app', () => {
       await mongoose.connection.collections[collection].deleteMany({});
     }
   });
-  // it('should GET / with success code', async () => {
-  //   const response = await request(app).get('/');
 
-  //   expect(response.statusCode).toBe(200);
-  // });
-
-  it('should GET /messages with success code', async done => {
-    const message = await mongoose.models.Message.create({ sender: 'Simon', body: 'hola' });
-    const response = await request(app).get('/messages/');
-    done();
-
-    expect(response.statusCode).toBe(200);
-    expect(response.body).toHaveLength(1);
-    expect(response.body[0].sender).toBe(message.sender);
-    expect(response.body[0].body).toBe(message.body);
+  afterAll(async () => {
+    await mongoose.disconnect();
   });
 
-  it('should create a new message', async done => {
-    const message = { sender: 'Simon', body: 'hola' };
-
-    const response = await request(app).post('/messages/').send(message);
-    done();
+  it('should GET / with success code', async () => {
+    const response = await request(app).get('/');
 
     expect(response.statusCode).toBe(200);
-    expect(response.body.sender).toBe(message.sender);
-    expect(response.body.body).toBe(message.body);
-  })
-})
+  });
+});

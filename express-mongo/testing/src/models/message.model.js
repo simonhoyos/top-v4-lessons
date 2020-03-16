@@ -1,7 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const messageSchema = new Schema({
-  sender: String,
+  sender: {
+    type: String,
+    required: [true, 'sender is required'],
+  },
   body: String,
 }, {
   timestamps: true,

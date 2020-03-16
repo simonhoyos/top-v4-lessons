@@ -7,15 +7,22 @@ module.exports = {
     res.status(200).json(messages);
   },
   async create(req, res) {
-    const data = req.body;
-    const message = await Message.create(data);
+    try {
+      const data = req.body;
+      const message = await Message.create(data);
 
-    res.status(200).json(message)
+      res.status(200).json(message);
+    } catch(error) {
+      res.status(400).json({ error });
+    }
   },
   async update(req, res) {
     const id = req.params.id;
     const data = req.body;
-    const message = await Message.findByIdAndUpdate(id, data, { new: true });
+    const message = await Message.findByIdAndUpdate(id, data, {
+      new: true,
+      useFindAndModify: false,
+    });
 
     res.status(200).json(message);
   },
