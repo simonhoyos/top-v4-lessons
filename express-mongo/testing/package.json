@@ -2,9 +2,14 @@
   "name": "testing",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": "13.5",
+    "yarn": "1.21.1"
+  },
   "scripts": {
     "dev": "nodemon src/server.js",
-    "test": "MONGO_URI='mongodb://localhost:27017/test-test' SECRET='12345' jest --forceExit --coverage --detectOpenHandles"
+    "test": "MONGO_URI='mongodb://localhost:27017/test-test' SECRET='12345' jest --forceExit --coverage --detectOpenHandles",
+    "start": "node src/server.js"
   },
   "license": "MIT",
   "dependencies": {

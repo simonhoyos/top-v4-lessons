@@ -6,7 +6,7 @@ module.exports = {
   async signup(req, res) {
     const { email, password } = req.body;
     const encPassword = await bcrypt.hash(password, 8);
-    const user = User.create({ email, password: encPassword });
+    const user = await User.create({ email, password: encPassword });
 
     const token = jwt.sign(
       { user },
