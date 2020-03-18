@@ -1,0 +1,25 @@
+{
+  "name": "restaurants",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "test": "MONGO_URI='mongodb://localhost:27017/restaurants-test' SECRET='das67HJ6yhrjdyhjrhw' jest --forceExit --coverage --detectOpenHandles"
+  },
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.5",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
+  }
+}
