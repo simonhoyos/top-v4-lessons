@@ -17,13 +17,33 @@ io.on('connection', socket => {
     console.log(data);
   })
 
-  socket.on('message', data => {
-    console.log(data);
-  });
+  // socket.on('message', data => {
+    // socket.emit('message', data); // emitir a la misma conexion
+    // io.emit('message', data); // emitir a todos los conectados
+  //   socket.broadcast.emit('message', data) // emitir a todos menos a la misma conexion
+  // });
 
   socket.on('disconnect', () => {
     console.log('disconneted');
   });
 });
+
+const group = io.of('/group').on('connection', socket => {
+  console.log('connected to group');
+  socket.emit(
+    'open',
+    'Hola, bienvenido a group!',
+    'Este es un chat abierto',
+    () => {
+      console.log('message received');
+    }
+  );
+
+  socket.on('message', (data, cb) => {
+    // socket.emit('message', data); // emitir a la misma conexión
+    // group.emit('message', data); // emitir a todas las conexiones del grupo
+    cb();
+  })
+})
 
 http.listen(port, () => console.log(`Server listening on http://localhost:${port}`));

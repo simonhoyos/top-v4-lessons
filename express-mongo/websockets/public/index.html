@@ -14,21 +14,46 @@
     <button>send</button>
   </form>
 
+  <button class="connect">Connect</button>
+
   <script src="/socket.io/socket.io.js"></script>
   <script>
     const socket = io();
+    let group;
 
     socket.on('open', data => {
       console.log(data);
     });
 
+    socket.on('message', data => {
+      console.log(data);
+    })
+
     socket.emit('loquesea', 'Hola server desde FE');
 
     const form = document.querySelector('.form');
+    const button = document.querySelector('.connect');
     form.addEventListener('submit', e => {
       e.preventDefault();
 
-      socket.emit('message', e.target.elements.message.value);
+      // socket.emit('message', e.target.elements.message.value);
+      group.emit('message', e.target.elements.message.value, () => {
+        console.log('message received')
+      });
+    });
+
+    button.addEventListener('click', e => {
+      console.log('click')
+      group = io.connect('http://localhost:3000/group');
+
+      group.on('open', (msg1, msg2, cb) => {
+        console.log(msg1, msg2);
+        cb()
+      })
+
+      group.on('message', data => {
+        console.log(data)
+      })
     });
   </script>
 </body>
