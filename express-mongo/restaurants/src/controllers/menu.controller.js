@@ -4,7 +4,15 @@ const Plate = require('../models/plate.model');
 module.exports = {
   async getAll(req, res) {
     try {
-      const menus = await Menu.find().populate('plates');
+      let menu;
+      if(req.user.type === 'ADMIN') {
+        menus = await Menu.find().populate('plates');
+      } else if(req.user.type === 'COSTUMER') {
+        menus = await Menu.find({ display: true }).populate('plates')
+      } else {
+        throw new Error('You don\'t have enough permissions')
+      }
+
       res.status(200).json(menus);
     } catch (error) {
       res.status(500).json({ error });
@@ -21,7 +29,7 @@ module.exports = {
   },
   async create(req, res) {
     try {
-      const menu = await Menu.create(req.body).populate('plates');
+      const menu = await Menu.create(req.body);
 
       await req.body.plates.forEach(async id => {
         const plate = await Plate.findById(id);
@@ -43,7 +51,7 @@ module.exports = {
         useFindAndModify: false,
       };
 
-      const menu = await Menu.findByIdAndUpdate(id, data, options).populate('plates');
+      const menu = await Menu.findByIdAndUpdate(id, req.body, options).populate('plates');
 
       res.status(200).json(menu);
     } catch (error) {

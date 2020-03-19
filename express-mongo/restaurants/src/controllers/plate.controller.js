@@ -1,7 +1,7 @@
 const Plate = require('../models/plate.model');
 
 module.exports = {
-  async getAll(req, res) {
+  async getAll(req, res, next) {
     try {
       const plates = await Plate.find().populate('menus');
 
