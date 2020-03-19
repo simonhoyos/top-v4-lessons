@@ -5,11 +5,15 @@ const jwt = require('jsonwebtoken');
 module.exports = {
   async signup(req, res) {
     try {
+      console.log(req.baseUrl);
+      const admin = new RegExp('admin');
+
       const { password, ...data } = req.body;
       const encPassword = await bcrypt.hash(password, 8);
       const user = await User.create({
         password: encPassword,
         ...data,
+        type: admin.test(req.baseUrl) ? 'ADMIN' : 'COSTUMER'
       });
 
       const token = jwt.sign(

@@ -3,12 +3,7 @@ const Plate = require('../models/plate.model');
 module.exports = {
   async getAll(req, res) {
     try {
-      if(req.user.type !== 'ADMIN') {
-        throw new Error('You don\'t have enough permissions');
-      }
-
       const plates = await Plate.find().populate('menus');
-      console.log({ plates });
 
       res.status(200).json(plates);
     } catch (error) {
