@@ -66,3 +66,10 @@
 3. ¿Cuál es la diferencia entre un callback y una promesa?
 4. [count and say](https://leetcode.com/problems/count-and-say/)
 
+### Marzo 19
+
+1. ¿Qué es un middleware?
+2. ¿Qué es el session storage?
+3. ¿Qué es el package.json?
+4. [Majority Element - LeetCode](https://leetcode.com/problems/majority-element/)
+

@@ -26,5 +26,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
+  Book.associate = (db) => {
+    db.Book.belongsToMany(db.Category, { through: 'CategoryBook' });
+  };
+
   return Book;
 };

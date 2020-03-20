@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const categoryModel = require('./models/category.model');
 
+// Configuración de la base de datos
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
@@ -22,6 +23,7 @@ const db = {
   sequelize,
 };
 
+//Agregar modelos a la base de datos
 db.Category = db.sequelize.import(
   'category',
   categoryModel
@@ -31,5 +33,12 @@ db.Book = db.sequelize.import(
   'book',
   require('./models/book.model')
 );
+
+// Revisar que modelos tienen relaciones y correr cade uno de esos métodos
+for(let key in db) {
+  if(db[key].associate) {
+    db[key].associate(db);
+  }
+}
 
 module.exports = db;
