@@ -15,7 +15,7 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    images: {},
+    images: [],
     loading: false,
     error: null,
   }
@@ -23,7 +23,7 @@ class App extends React.Component {
   async componentDidMount() {
     try {
       this.setState({ loading: true });
-      const { data} = await axios({
+      const { data } = await axios({
         method: 'GET',
         baseURL: 'http://jsonplaceholder.typicode.com/',
         url: '/photos',
@@ -39,7 +39,7 @@ class App extends React.Component {
     } catch (error) {
       this.setState({ error });
     } finally {
-      this.setState({ loading: false })
+      this.setState({ loading: false });
     }
     // axios({
     //   method: 'GET',
