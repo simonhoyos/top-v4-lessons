@@ -21,23 +21,81 @@ import './App.css';
 //   }
 // }
 
-function App() {
-  const [count, setCount] = React.useState(0);
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
-  const [posts, setPosts] = React.useState([]);
+function reducer(state, action) {
+  switch (action.type) {
+    case 'setPosts':
+      return {
+        ...state,
+        posts: action.payload
+      };
+    case 'toggleLoading':
+      return {
+        ...state,
+        loading: !state.loading
+      };
+    case 'setError':
+      return {
+        ...state,
+        error: action.payload
+      };
+    default:
+      return state
+  }
+}
+
+// action = { type, payload }
+
+const initialState = {
+  loading: false,
+  error: null,
+  posts: [],
+}
+
+function useClock() {
+  const [clock, setClock] = React.useState(new Date().toLocaleString());
+
+  setInterval(() => {
+    setClock(new Date().toLocaleString());
+  }, 1000);
+
+  return clock;
+}
+
+function usePosts() {
+  // const [loading, setLoading] = React.useState(false);
+  // const [error, setError] = React.useState(null);
+  // const [posts, setPosts] = React.useState([]);
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
   React.useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
+    dispatch({ type: 'toggleLoading' })
     axios({
       method: 'GET',
       baseURL: 'http://jsonplaceholder.typicode.com',
       url: '/posts'
     })
-      .then(({ data }) => setPosts(data))
-      .catch((error) => setError(error))
-      .finally(() => setLoading(false));
+      .then(({ data }) => dispatch({ type: 'setPosts', payload: data }))
+      // .catch((error) => setError(error))
+      .catch((error) => dispatch({ type: 'setError', payload: error }))
+      // .finally(() => setLoading(false));
+      .finally(() => dispatch({ type: 'toggleLoading' }));
+
+    // window.addEventListener('resize', handleResize);
+
+    // return () => {
+    //   axios.cancel();
+    //   window.removeEventListener('resize', handleResize);
+    // }
   }, []);
+
+  return state;
+}
+
+function App() {
+  const [count, setCount] = React.useState(0);
+  const clock = useClock();
+  const { posts, loading, error } = usePosts();
 
   function handleClick() {
     setCount(count + 1);
@@ -47,6 +105,7 @@ function App() {
   if(error) return <p>Something went wrong</p>;
   return (
     <div className="App">
+      <p>{clock}</p>
       <button onClick={handleClick}>{count}</button>
       {posts && posts.length && posts.map(({ id, title, body}) => (
         <div key={id} className="post">
