@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskItem should match snapshot 1`] = `
+<div
+  className="task"
+>
+  <h2>
+    nueva tarea
+  </h2>
+  <p>
+    por completar
+  </p>
+</div>
+`;
