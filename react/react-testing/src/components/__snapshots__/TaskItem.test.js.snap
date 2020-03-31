@@ -10,5 +10,11 @@ exports[`TaskItem should match snapshot 1`] = `
   <p>
     por completar
   </p>
+  <button
+    data-testid="complete-task"
+    type="button"
+  >
+    Completar
+  </button>
 </div>
 `;

@@ -35,11 +35,31 @@ class App extends React.Component {
     });
   }
 
+  handleClick = id => {
+    return e => {
+      const tasks = this.state.tasks.map(task => {
+        if(task.id === id) {
+          return {
+            ...task,
+            done: !task.done,
+          }
+        }
+
+        return task;
+      });
+
+      this.setState({ tasks });
+    }
+  }
+
   render() {
     const { tasks, title } = this.state;
     return (
       <div className="App">
-        <TasksList tasks={tasks} />
+        <TasksList
+          tasks={tasks}
+          onClick={this.handleClick}
+        />
         <TaskForm
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}

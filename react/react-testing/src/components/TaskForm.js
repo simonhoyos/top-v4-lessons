@@ -5,11 +5,13 @@ class TaskForm extends React.Component {
     const { onSubmit, onChange, title } = this.props
     return (
       <form
+        data-testid="task-form"
         className="create-task"
         onSubmit={onSubmit}
       >
         <label htmlFor="title">Título</label>
         <input
+          data-testid="input-title"
           id="title"
           name="title"
           onChange={onChange}

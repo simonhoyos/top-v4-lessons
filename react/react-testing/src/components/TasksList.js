@@ -3,7 +3,7 @@ import TaskItem from './TaskItem';
 
 class TasksList extends React.Component {
   render() {
-    const { tasks } = this.props;
+    const { tasks, onClick } = this.props;
     return (
       <div className="tasks">
         <h1>Lista de Tareas</h1>
@@ -13,6 +13,7 @@ class TasksList extends React.Component {
               done={done}
               key={id}
               title={title}
+              onClick={onClick(id)}
             />
           )
         })}
