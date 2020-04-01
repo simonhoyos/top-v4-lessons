@@ -4,14 +4,7 @@ exports[`App should match snapshot 1`] = `
 <div
   className="App"
 >
-  <TasksList
-    onClick={[Function]}
-    tasks={Array []}
-  />
-  <TaskForm
-    onChange={[Function]}
-    onSubmit={[Function]}
-    title=""
-  />
+  <Connect(TasksList) />
+  <Connect(TaskForm) />
 </div>
 `;

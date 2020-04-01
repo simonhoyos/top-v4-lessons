@@ -1,9 +1,10 @@
 import React from 'react';
 import TaskItem from './TaskItem';
+import { connect } from 'react-redux';
 
 class TasksList extends React.Component {
   render() {
-    const { tasks, onClick } = this.props;
+    const { tasks } = this.props;
     return (
       <div className="tasks">
         <h1>Lista de Tareas</h1>
@@ -13,7 +14,7 @@ class TasksList extends React.Component {
               done={done}
               key={id}
               title={title}
-              onClick={onClick(id)}
+              id={id}
             />
           )
         })}
@@ -22,4 +23,6 @@ class TasksList extends React.Component {
   }
 }
 
-export default TasksList;
+const mapStateToProps = ({ tasks }) => ({ tasks });
+
+export default connect(mapStateToProps)(TasksList);
