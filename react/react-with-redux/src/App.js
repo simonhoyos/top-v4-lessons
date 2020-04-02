@@ -1,24 +1,43 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { INCREASE, DECREASE } from './store/index';
+import { increaseCount, decreaseCount } from './reducers/countReducer';
+import { getPosts } from './reducers/postsReducer';
 import './App.css';
 
-function App(props) {
+function App({
+  count,
+  posts,
+  increaseCount,
+  decreaseCount,
+  getPosts
+}) {
+  React.useEffect(() => {
+    getPosts()
+  }, [getPosts]);
+
   return (
     <div className="App">
-      <h1>{props.count}</h1>
+      <h1>{count}</h1>
       <button
         type="button"
-        onClick={() => props.increaseCount(1)}
+        onClick={() => increaseCount(1)}
       >
         Increase
       </button>
       <button
         type="button"
-        onClick={props.decreaseCount}
+        onClick={decreaseCount}
       >
         Decrease
       </button>
+      <div className="posts">
+        {posts && posts.length > 0 && posts.map(post => (
+          <div className="post" key={post.id}>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -26,22 +45,17 @@ function App(props) {
 // HOC - High Order Component
 // HOF - High Order Function
 
-const mapStateToProps = (state) => {
-  console.log(state)
+const mapStateToProps = ({ countReducer, postsReducer }) => {
   return {
-    count: state.count
+    count: countReducer.count,
+    posts: postsReducer.posts
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    increaseCount(data) {
-      dispatch({ type: INCREASE, payload: data });
-    },
-    decreaseCount() {
-      dispatch({ type: DECREASE });
-    }
-  }
+const mapDispatchToProps = {
+  increaseCount,
+  decreaseCount,
+  getPosts,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

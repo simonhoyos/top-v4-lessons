@@ -1,27 +1,23 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
+import { countReducer } from '../reducers/countReducer';
+import { postsReducer } from '../reducers/postsReducer';
 
-export const INCREASE = 'INCREASE';
-export const DECREASE = 'DECREASE';
-
-function reducer(state, action) {
-  switch (action.type) {
-    case INCREASE:
-      return {
-        ...state,
-        count: state.count + 1,
-      };
-    case DECREASE:
-      return {
-        ...state,
-        count: state.count - 1,
-      };
-    default:
-      return state;
+function logger(store) {
+  return function(next) {
+    return function(action) {
+      console.log('despachando action: ', action);
+      const result = next(action);
+      console.log('nuevo estado: ', store.getState());
+      return result;
+    }
   }
 }
 
-const initialState = {
-  count: 0,
-};
+const rootReducer = combineReducers({
+  countReducer,
+  postsReducer,
+});
+const middlewares = applyMiddleware(logger, thunk);
 
-export const store = createStore(reducer, initialState);
+export const store = createStore(rootReducer, middlewares);
