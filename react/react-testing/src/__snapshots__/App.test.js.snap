@@ -1,10 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App should match snapshot 1`] = `
-<div
-  className="App"
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
 >
-  <Connect(TasksList) />
-  <Connect(TaskForm) />
-</div>
+  <App>
+    <div
+      className="App"
+    >
+      <Connect(TasksList)>
+        <TasksList
+          dispatch={[Function]}
+        >
+          <div
+            className="tasks"
+          >
+            <h1>
+              Lista de Tareas
+            </h1>
+          </div>
+        </TasksList>
+      </Connect(TasksList)>
+      <Connect(TaskForm)>
+        <TaskForm
+          onChange={[Function]}
+          onSubmit={[Function]}
+        >
+          <form
+            className="create-task"
+            data-testid="task-form"
+            onSubmit={[Function]}
+          >
+            <label
+              htmlFor="title"
+            >
+              Título
+            </label>
+            <input
+              data-testid="input-title"
+              id="title"
+              name="title"
+              onChange={[Function]}
+              type="text"
+            />
+            <button>
+              Crear tarea
+            </button>
+          </form>
+        </TaskForm>
+      </Connect(TaskForm)>
+    </div>
+  </App>
+</Provider>
 `;

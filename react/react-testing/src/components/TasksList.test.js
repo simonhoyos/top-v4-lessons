@@ -1,5 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
 import TaskItem from './TaskItem';
 import TasksList from './TasksList';
 
@@ -9,13 +11,19 @@ const tasksMock = [
   { id: 2, title: 'tarea 3', done: false },
 ];
 
+const mockStore = configureStore();
+
 describe('TasksList', () => {
   it('should render 3 tasks', () => {
-    const handleClick = jest.fn();
-    const wrapper = shallow(<TasksList
-      tasks={tasksMock}
-      onClick={handleClick}
-    />);
+    const store = mockStore({
+      tasks: tasksMock
+    });
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <TasksList/>
+      </Provider>
+    );
     const items = wrapper.find(TaskItem);
 
     expect(items).toHaveLength(3);

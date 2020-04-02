@@ -1,23 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TaskForm should match snapshot 1`] = `
-<form
-  className="create-task"
-  data-testid="task-form"
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
 >
-  <label
-    htmlFor="title"
-  >
-    Título
-  </label>
-  <input
-    data-testid="input-title"
-    id="title"
-    name="title"
-    type="text"
-  />
-  <button>
-    Crear tarea
-  </button>
-</form>
+  <Connect(TaskForm)>
+    <TaskForm
+      onChange={[Function]}
+      onSubmit={[Function]}
+    >
+      <form
+        className="create-task"
+        data-testid="task-form"
+        onSubmit={[Function]}
+      >
+        <label
+          htmlFor="title"
+        >
+          Título
+        </label>
+        <input
+          data-testid="input-title"
+          id="title"
+          name="title"
+          onChange={[Function]}
+          type="text"
+        />
+        <button>
+          Crear tarea
+        </button>
+      </form>
+    </TaskForm>
+  </Connect(TaskForm)>
+</Provider>
 `;

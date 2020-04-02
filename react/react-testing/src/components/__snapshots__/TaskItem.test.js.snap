@@ -1,20 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TaskItem should match snapshot 1`] = `
-<div
-  className="task"
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
 >
-  <h2>
-    nueva tarea
-  </h2>
-  <p>
-    por completar
-  </p>
-  <button
-    data-testid="complete-task"
-    type="button"
+  <Connect(TaskItem)
+    done={false}
+    title="nueva tarea"
   >
-    Completar
-  </button>
-</div>
+    <TaskItem
+      done={false}
+      onClick={[Function]}
+      title="nueva tarea"
+    >
+      <div
+        className="task"
+      >
+        <h2>
+          nueva tarea
+        </h2>
+        <p>
+          por completar
+        </p>
+        <button
+          data-testid="complete-task"
+          onClick={[Function]}
+          type="button"
+        >
+          Completar
+        </button>
+      </div>
+    </TaskItem>
+  </Connect(TaskItem)>
+</Provider>
 `;

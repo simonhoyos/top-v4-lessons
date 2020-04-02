@@ -1,18 +1,36 @@
 import React from 'react';
 import { shallow, render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
 import App from './App';
 import TaskItem from './components/TaskItem';
 
+const mockStore = configureStore();
+
 describe('App', () => {
   it('should match snapshot', () => {
-    const wrapper = shallow(<App />);
+    const store = mockStore({})
+    const wrapper = mount(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should create a new task', () => {
-    const wrapper = mount(<App />);
+    const store = mockStore({
+      onChange: jest.fn(),
+      onSubmit: jest.fn(),
+      tasks: [{ id: 1, title: 'tarea 1', done: false }],
+    })
+    const wrapper = mount(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
     const input = wrapper.find('[data-testid="input-title"]');
 
     input.simulate('change', {
@@ -36,7 +54,17 @@ describe('App', () => {
   });
 
   it('should complete task', () => {
-    const wrapper = mount(<App />);
+    const store = mockStore({
+      onChange: jest.fn(),
+      onSubmit: jest.fn(),
+      onClick: jest.fn(),
+      tasks: [{ id: 1, title: 'tarea 1', done: false }],
+    });
+    const wrapper = mount(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
     const input = wrapper.find('[data-testid="input-title"]');
 
     input.simulate('change', {
