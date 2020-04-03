@@ -73,3 +73,16 @@
 3. ¿Qué es el package.json?
 4. [Majority Element - LeetCode](https://leetcode.com/problems/majority-element/)
 
+### Marzo 26
+
+1. ¿Qué es una función pura?
+2. ¿Qué es el virtual DOM?
+3. ¿Qué es un API?
+4. [Move Zeroes - LeetCode](https://leetcode.com/problems/move-zeroes/)
+
+### Abril 2
+
+1. ¿Qué es `Prop Drilling` y cómo se puede evitar?
+2. ¿Qué es inmutabilidad y por qué es importante en React?
+3. ¿Cuál es el ciclo de vida de un componente?
+
