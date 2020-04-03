@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(App)
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  >
+    <App
+      count={0}
+      decreaseCount={[Function]}
+      increaseCount={[Function]}
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    >
+      <div
+        className="App"
+      >
+        <h1>
+          0
+        </h1>
+        <button
+          onClick={[Function]}
+          type="button"
+        >
+          Increase
+        </button>
+        <button
+          onClick={[Function]}
+          type="button"
+        >
+          Decrease
+        </button>
+        <Connect(Posts)>
+          <Posts
+            getPosts={[Function]}
+            posts={Array []}
+          >
+            <div
+              className="posts"
+            />
+          </Posts>
+        </Connect(Posts)>
+      </div>
+    </App>
+  </Connect(App)>
+</Provider>
+`;

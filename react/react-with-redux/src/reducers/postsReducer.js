@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const GET_POSTS = 'GET_POSTS';
+export const GET_POSTS = 'GET_POSTS';
 
 export function getPosts() {
   return function(dispatch) {
@@ -18,7 +18,7 @@ export function getPosts() {
   }
 }
 
-const initialState = {
+export const initialState = {
   posts: [],
 };
 

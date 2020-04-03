@@ -1,9 +1,9 @@
-const INCREASE = 'INCREASE';
-const DECREASE = 'DECREASE';
+export const INCREASE = 'INCREASE';
+export const DECREASE = 'DECREASE';
 
-export function increaseCount(data) {
+export function increaseCount() {
   return function(dispatch) {
-    return dispatch({ type: INCREASE, payload: data });
+    return dispatch({ type: INCREASE });
   }
 }
 
@@ -13,7 +13,7 @@ export function decreaseCount() {
   }
 }
 
-const initialState = {
+export const initialState = {
   count: 0,
 };
 
