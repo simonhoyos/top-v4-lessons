@@ -13,7 +13,7 @@ module.exports = {
       const user = await User.create({
         password: encPassword,
         ...data,
-        type: admin.test(req.baseUrl) ? 'ADMIN' : 'COSTUMER'
+        // type: admin.test(req.baseUrl) ? 'ADMIN' : 'COSTUMER'
       });
 
       const token = jwt.sign(
