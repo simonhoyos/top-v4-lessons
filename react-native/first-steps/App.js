@@ -33,7 +33,7 @@ export default function App() {
         <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ut, vero laborum tempore doloremque voluptatibus cum nisi maxime neque quibusdam eligendi nostrum quod laboriosam vel commodi ad hic, aliquam exercitationem!</Text>
       </ScrollView>
       {/* <Image source="https://reactnative.dev/docs/assets/p_cat2.png" /> */}
-      <Image source="https://reactnative.dev/docs/assets/p_cat2.png" style={{width: 200, height: 200}}/>
+      <Image source={{ uri: "https://reactnative.dev/docs/assets/p_cat2.png" }} style={{width: 200, height: 200}}/>
       <TextInput style={styles.input} value={value} onChange={handleChange} />
       <Button onPress={handlePress} title="Submit"/>
     </View>
