@@ -5,6 +5,24 @@ export default function App() {
   const [value, setValue] = React.useState('hola');
   const [list, setList] = React.useState([]);
 
+  // const [state, setState] = React.useState({
+  //   name: '',
+  //   password: '',
+  //   email: '',
+  //   age: ''
+  // });
+
+  // function handleChange(e) {
+  //   const { name, value } = e.target;
+
+  //   const newState = {
+  //     ...state,
+  //     [name]: value,
+  //   };
+
+  //   setState(newState);
+  // }
+
   function handleChange(e) {
     const { value } = e.target;
     setValue(value);
